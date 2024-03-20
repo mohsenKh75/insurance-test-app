@@ -7,9 +7,9 @@ interface Props {
 }
 export function MainLayout({ children, header, footer }: Props) {
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="h-full">
       <header>{header}</header>
-      <main className="w-full self-center">{children}</main>
+      <main className="flex flex-col items-center w-full">{children}</main>
       <footer>{footer}</footer>
     </div>
   );
