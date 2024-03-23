@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 //mobile validation:
-const validateMobileNumber = body("mobileNumber")
+const validateMobileNumber = body("mobile_number")
   .matches(/^09\d{9}$/)
   .withMessage("فرمت شماره موبایل اشتباه است.");
 
@@ -27,21 +27,21 @@ app.post("/login", validateMobileNumber, (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { mobileNumber } = req.body;
+  const { mobile_number } = req.body;
 
   res.send({
     status: 200,
-    mobileNumber,
+    mobile_number,
     message: "لطفاً نام و نام خانوادگی را وارد کنید.",
   });
 });
 
-// get login data
+// post register data
 app.post(
-  "/login/details",
+  "/register",
   [
-    validatePersianName("name"),
-    validatePersianName("familyName"),
+    validatePersianName("first_name"),
+    validatePersianName("family_name"),
     body("password")
       .isLength({ min: 4 })
       .withMessage("طول پسورد باید حداقل ۴ کاراکتر باشد."),
@@ -52,12 +52,12 @@ app.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, familyName, password } = req.body;
+    const { first_name, family_name, password } = req.body;
 
     res.send({
       status: 200,
       message: "عملیات با موفقیت انجام شد.",
-      data: name,
+      data: { first_name, family_name },
     });
   }
 );
