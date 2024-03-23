@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { MainLayout } from "./MainLayout";
 import "@/styles/globals.scss";
 
 interface Props {
