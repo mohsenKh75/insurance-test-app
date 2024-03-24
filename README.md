@@ -2,8 +2,6 @@ start client with
 
 # yarn run dev
 
-go to the server folder and start the server with
-
 # install server dependencies with yarn init-server
 
 # run server with yarn server
