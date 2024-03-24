@@ -12,6 +12,7 @@ interface Props {
   buttonType?: keyof typeof BUTTON_TYPE;
   leftIcon?: string | StaticImport;
   rightIcon?: string | StaticImport;
+  disabled?: boolean;
 }
 
 const BUTTON_TYPE = {
@@ -29,14 +30,17 @@ export function Button({
   buttonType = BUTTON_TYPE.DEFAULT,
   leftIcon,
   rightIcon,
+  disabled,
 }: Props) {
   return (
     <button
+      disabled={disabled}
       className={classnames(
         "flex items-center justify-center relative rounded-full",
         textSize,
         {
           "bg-teal-500 text-white": shape === "filled",
+          "text-slate-300": disabled,
           " border border-teal-500 text-teal-500": shape === "outlined",
           "w-28 h-10": buttonType === BUTTON_TYPE.DEFAULT,
           "w-20 h-10": buttonType === BUTTON_TYPE.SMALL,
