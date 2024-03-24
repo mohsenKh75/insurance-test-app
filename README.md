@@ -4,7 +4,9 @@ start client with
 
 go to the server folder and start the server with
 
-# node server.js
+# install server dependencies with yarn init-server
+
+# run server with yarn server
 
 - I used RHF for handing form - react-modal-sheet for modal
 - Unfortunately, I haven't had time to handle and preserve login data properly (with redux).
