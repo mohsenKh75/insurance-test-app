@@ -20,7 +20,7 @@ export function useApi({ onSuccess }: { onSuccess?: () => void }) {
       return;
     }
 
-    setData(response.data?.data);
+    setData(response?.data);
     setError(null);
     setIsPending(false);
     onSuccess?.();

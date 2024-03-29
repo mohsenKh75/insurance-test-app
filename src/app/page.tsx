@@ -27,11 +27,13 @@ export default function Home() {
             <SquareButton
               topIcon={CarLogo}
               onClick={() => router.push("/select-insurance")}
+              title="شخص ثالث"
             />
             <SquareButton
               topIcon={CarLogo}
               onClick={() => console.log("clicked")}
               disabled
+              title="بدنه"
             />
           </div>
         </div>
