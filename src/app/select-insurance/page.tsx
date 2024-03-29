@@ -22,16 +22,14 @@ const INPUT_DATA = {
   discountPercent: "discountPercent",
 } as const;
 
+const TITLES: Record<keyof typeof INPUT_DATA, string> = {
+  carTypeInput: "نوع خودرو خود را انتخاب کنید",
+  insuranceCompany: "شرکت بیمه گر قبلی خود را انتخاب کنید",
+  discountPercent: "درصد تخفیف بیمه شخص ثالث را وارد کنید",
+};
+
 function stepTitleHandler(step: keyof typeof INPUT_DATA) {
-  if (step === "carTypeInput") {
-    return "نوع خودرو خود را انتخاب کنید.";
-  }
-  if (step === "insuranceCompany") {
-    return "شرکت بیمه گر قبلی خود را انتخاب کنید";
-  }
-  if (step === "discountPercent") {
-    return "درصد تخفیف بیمه شخص ثالث را وارد کنید";
-  }
+  return TITLES[step];
 }
 export default function SelectInsurance() {
   const [step, setStep] = useState<keyof typeof INPUT_DATA>("carTypeInput");
