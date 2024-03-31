@@ -3,11 +3,11 @@ import { MainLayout } from "../MainLayout";
 import { useForm } from "react-hook-form";
 import { farsiValidator, passwordValidator } from "@/utils";
 import { useApi } from "@/hooks/useApi";
-import { POST_REGISTER_DATA_EP } from "@/apis/register/endpoints";
 import { postRegisterData } from "@/apis/register";
 import { useRouter } from "next/navigation";
 import { Button, Input, Loading, PageTitle } from "@/components/shared";
-import { useRequest } from "@/hooks/useRequest";
+import { useDispatch } from "react-redux";
+import { login } from "@/store/user/userSlice";
 
 export default function Register() {
   const {
@@ -16,14 +16,22 @@ export default function Register() {
     formState: { errors },
   } = useForm();
 
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const { onRequest, isPending } = useApi({
-    onSuccess: () => router.push("/?logged_in=1"),
+    onSuccess: () => router.push("/"),
   });
 
   function submitHandler(data: any) {
-    onRequest(() => postRegisterData(data));
+    onRequest(() => postRegisterData(data)).then((res) => {
+      const userData = {
+        firstName: res?.data?.data?.first_name,
+        lastName: res?.data?.data?.first_name,
+      };
+      localStorage.setItem("user-info", JSON.stringify(userData));
+      dispatch(login(userData));
+    });
   }
 
   if (isPending) {

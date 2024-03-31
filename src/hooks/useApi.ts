@@ -24,6 +24,7 @@ export function useApi({ onSuccess }: { onSuccess?: () => void }) {
     setError(null);
     setIsPending(false);
     onSuccess?.();
+    return response;
   };
 
   return { isPending, data, error, onRequest };
