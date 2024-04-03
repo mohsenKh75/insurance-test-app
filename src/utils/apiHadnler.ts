@@ -1,21 +1,21 @@
-import axios, { AxiosResponse } from "axios"; // Assuming you have axios installed
+import axios, { AxiosResponse } from 'axios'; // Assuming you have axios installed
 
 export interface ApiRequest {
   ep: string;
-  method?: "GET" | "POST" | "PUT" | "DELETE";
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   body?: any;
 }
 
 export const apiHandler = async ({
   ep,
-  method = "GET",
-  body = null,
+  method = 'GET',
+  body = null
 }: ApiRequest): Promise<AxiosResponse<any> | Error> => {
   try {
     const response = await axios({
       method,
       url: ep,
-      data: body,
+      data: body
     });
 
     return response;
