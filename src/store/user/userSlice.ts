@@ -10,7 +10,7 @@ const initialState: UserInitialState = {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 1,
   initialState,
   reducers: {
     login: (state, action: PayloadAction<{ firstName: string; lastName: string }>) => {
