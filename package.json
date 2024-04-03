@@ -9,16 +9,26 @@
     "lint": "next lint",
     "server": "cd ./server && node server.js",
     "init-server": "cd ./server && yarn",
-    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+    "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "/src/**/*.{js,jsx,ts,tsx,json,css,scss}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
+    "@commitlint/config-conventional": "^19.1.0",
     "@reduxjs/toolkit": "^2.2.2",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "axios": "^1.6.8",
     "clsx": "^2.1.0",
+    "commitlint": "^19.2.1",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-unused-imports": "^3.1.0",
     "framer-motion": "^11.0.20",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "next": "14.1.3",
     "prettier": "^3.2.5",
     "react": "^18",
