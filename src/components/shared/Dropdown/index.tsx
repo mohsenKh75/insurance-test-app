@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Input } from "..";
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import ArrowDown from "~/main/arrowDown.svg";
+import React, { useEffect, useRef, useState } from 'react';
+import { Input } from '..';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
+import ArrowDown from '~/main/arrowDown.svg';
 
 interface Props {
   placeholder?: string;
@@ -20,7 +20,7 @@ export function Dropdown({
   id,
   optionIdProp,
   optionTitleProp,
-  selectOptionHandler,
+  selectOptionHandler
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -30,17 +30,13 @@ export function Dropdown({
   }
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    )
-      setIsOpen(false);
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) setIsOpen(false);
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
@@ -50,16 +46,16 @@ export function Dropdown({
         leftIcon={ArrowDown}
         id={id}
         register={register(id)}
-        type="text"
+        type='text'
         onClick={toggleDropdown}
         placeholder={placeholder}
         inputProps={{ readOnly: true }}
       />
       {isOpen && (
-        <ul className="border-slate-600 outline-slate-200 outline w-full rounded-sm bg-white">
+        <ul className='border-slate-600 outline-slate-200 outline w-full rounded-sm bg-white'>
           {options?.map((option) => (
             <li
-              className="px-2"
+              className='px-2'
               key={option[optionIdProp]}
               onClick={() => {
                 selectOptionHandler(option[optionTitleProp]);

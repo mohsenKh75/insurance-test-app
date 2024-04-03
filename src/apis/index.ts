@@ -1,3 +1,3 @@
-export * from "./login";
-export * from "./register";
-export * from "./select-insurance";
+export * from './login';
+export * from './register';
+export * from './select-insurance';

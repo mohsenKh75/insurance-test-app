@@ -1,6 +1,6 @@
 export function farsiValidator(value: string) {
   const regex = /^[\u0600-\u06FF\s]*$/;
-  return regex.test(value) ? undefined : "فقط حروف فارسی مجاز است!";
+  return regex.test(value) ? undefined : 'فقط حروف فارسی مجاز است!';
 }
 
 export function passwordValidator(value: string) {
@@ -10,13 +10,13 @@ export function passwordValidator(value: string) {
   const validLength = value.length >= 4 && value.length <= 10;
 
   if (!hasNumber) {
-    return "رمز عبور باید شامل حداقل یک عدد باشد!";
+    return 'رمز عبور باید شامل حداقل یک عدد باشد!';
   } else if (!hasUpperCase) {
-    return "رمز عبور باید شامل حداقل یک حرف بزرگ لاتین باشد!";
+    return 'رمز عبور باید شامل حداقل یک حرف بزرگ لاتین باشد!';
   } else if (!hasLowerCase) {
-    return "رمز عبور باید شامل حداقل یک حرف کوچک لاتین باشد!";
+    return 'رمز عبور باید شامل حداقل یک حرف کوچک لاتین باشد!';
   } else if (!validLength) {
-    return "رمز عبور باید بین 4 تا 10 کاراکتر باشد!";
+    return 'رمز عبور باید بین 4 تا 10 کاراکتر باشد!';
   } else {
     return undefined;
   }
