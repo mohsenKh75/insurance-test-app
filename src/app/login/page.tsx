@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { MainLayout } from "../MainLayout";
-import { postLoginData } from "@/apis";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { Button, Input, Loading, PageTitle } from "@/components/shared";
-import { useApi } from "@/hooks/useApi";
+import { MainLayout } from '../MainLayout';
+import { postLoginData } from '@/apis';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { Button, Input, Loading, PageTitle } from '@/components/shared';
+import { useApi } from '@/hooks/useApi';
 
 export default function Login() {
   const {
     register,
     handleSubmit,
 
-    formState: { errors },
+    formState: { errors }
   } = useForm();
 
   const router = useRouter();
 
   const { isPending, onRequest } = useApi({
-    onSuccess: () => router.push("/register"),
+    onSuccess: () => router.push('/register')
   });
 
   function submitHandler(data: any) {
@@ -29,29 +29,25 @@ export default function Login() {
   }
   return (
     <MainLayout>
-      <PageTitle className="py-5" title="شماره تلفن را وارد کنید" />
-      <div className="flex flex-col w-full gap-5">
-        <form
-          className="flex flex-col items-center gap-5"
-          onSubmit={handleSubmit(submitHandler)}
-        >
+      <PageTitle className='py-5' title='شماره تلفن را وارد کنید' />
+      <div className='flex flex-col w-full gap-5'>
+        <form className='flex flex-col items-center gap-5' onSubmit={handleSubmit(submitHandler)}>
           <Input
-            type="tel"
-            id="phoneNumber"
-            placeholder="شماره موبایل"
+            type='tel'
+            id='phoneNumber'
+            placeholder='شماره موبایل'
             error={errors?.phoneNumber?.message as string}
-            register={register("phoneNumber", {
+            register={register('phoneNumber', {
               required: true,
-              validate: (value) =>
-                value && value.length === 11 && /^\d+$/.test(value),
+              validate: (value) => value && value.length === 11 && /^\d+$/.test(value),
               pattern: {
                 value: /^\d+$/,
-                message: "فقط عدد وارد کنید!",
-              },
+                message: 'فقط عدد وارد کنید!'
+              }
             })}
           />
 
-          <Button type="submit">تایید</Button>
+          <Button type='submit'>تایید</Button>
         </form>
       </div>
     </MainLayout>

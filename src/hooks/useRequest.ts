@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export function useRequest(request?: () => Promise<any>) {
   const [data, setData] = useState<any>([]);
@@ -12,7 +12,7 @@ export function useRequest(request?: () => Promise<any>) {
         setData(response);
         setError(null);
       } catch (err) {
-        console.error("error on fetching data:", err);
+        console.error('error on fetching data:', err);
         setError(err);
       } finally {
         setIsPending(false);
